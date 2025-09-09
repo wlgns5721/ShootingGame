@@ -1,10 +1,10 @@
 class MovePattern {
 	int temp1,temp2;
-	void Pattern1(game Game,Enemy enemy) {
+	void Pattern1(Game game,Enemy enemy) {
 		enemy.speed_Y = 0.5-Math.random();
  	}
 	
-	void Pattern2(game Game, Enemy enemy) {
+	void Pattern2(Game game, Enemy enemy) {
 		enemy.speed_Y = 0.5-Math.random();
 		if (enemy.enemy_X < enemy.move_Limit && enemy.move_index<200) {
 			enemy.speed_X-=enemy.speed_X/30;
@@ -17,7 +17,7 @@ class MovePattern {
 		enemy.move_index++;
 	}
 	
-	void Pattern3(game Game, Enemy enemy) {
+	void Pattern3(Game game, Enemy enemy) {
 		if (enemy.move_index>=0 && enemy.move_index <100) {
 			enemy.speed_X-=0.05;
 		}
@@ -86,7 +86,7 @@ class MovePattern {
 		
 	}
 	
-	void Pattern4(game Game, Enemy enemy) {
+	void Pattern4(Game game, Enemy enemy) {
 		/*if (enemy.move_index>=0 && enemy.move_index <100) {
 			enemy.speed_X-=0.05;
 		}
@@ -149,21 +149,21 @@ class MovePattern {
 		}
 		/*/
 	}
-	void Pattern5(game Game, Enemy enemy) {
-		Pattern3(Game, enemy);
+	void Pattern5(Game game, Enemy enemy) {
+		Pattern3(game, enemy);
 		if (enemy.move_index==999)
 			enemy.move_index=0;
 		
 	}
 	
-	void Pattern6(game Game, Enemy enemy) {
+	void Pattern6(Game game, Enemy enemy) {
 		if (enemy.temp==0)
 			enemy.temp = (int)enemy.enemy_Y;
 		enemy.enemy_X-=5;
 		enemy.enemy_Y = enemy.temp +20*Math.sin(enemy.enemy_X*Math.PI/180);
 	}
 	
-	void Pattern7(game Game, Enemy enemy) {
+	void Pattern7(Game game, Enemy enemy) {
 		if (enemy.temp==0)
 			enemy.temp = (int)enemy.enemy_X;
 		enemy.enemy_Y-=2;
@@ -171,7 +171,7 @@ class MovePattern {
 		
 	}
 	
-	void BossPattern(game Game, Enemy enemy) {
+	void BossPattern(Game game, Enemy enemy) {
 		if (enemy.move_index>=0 && enemy.move_index <100) {
 			enemy.speed_X-=0.05;
 		}
@@ -199,8 +199,8 @@ class MovePattern {
 			enemy.move_index=299;
 		enemy.move_index++;
 	}
-	void BossPattern3(game Game, Enemy enemy) {
-		if (Game.flow_index >=8600 && Game.flow_index <8800) {
+	void BossPattern3(Game game, Enemy enemy) {
+		if (game.flowIndex >=8600 && game.flowIndex <8800) {
 			enemy.speed_X=0;
 			enemy.speed_Y=0;
 			return;
@@ -237,5 +237,5 @@ class MovePattern {
 	
 	
 	
-	//void Pattern2(game Game, Enemy enemy)
+	//void Pattern2(game game, Enemy enemy)
 }

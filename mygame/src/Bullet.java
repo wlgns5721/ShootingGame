@@ -1,7 +1,7 @@
 class Bullet {
 	public int bullets_X, bullets_Y;
 	public int width,height,damage;
-	Bullet(int X, int Y,int Bullet_level, game Game) {
+	Bullet(int X, int Y,int Bullet_level, Game game) {
 		bullets_X = X;
 		width = 26;
 		switch (((Bullet_level-1)/4+1)) {
@@ -9,36 +9,36 @@ class Bullet {
 			bullets_Y = Y;
 			height = 16;
 			damage = 10;
-			Game.maxCount = 2;
-			Game.Attack_delay = 5;
+			game.maxCount = 2;
+			game.attackDelay = 5;
 			break;
 		case 2:
 			bullets_Y = Y-5;
 			height = 25;
 			damage = 15;
-			Game.maxCount = 3;
-			Game.Attack_delay = 5;
+			game.maxCount = 3;
+			game.attackDelay = 5;
 			break;
 		case 3:
 			bullets_Y = Y-10;
 			height = 36;
 			damage = 20;
-			Game.maxCount = 4;
-			Game.Attack_delay = 5;
+			game.maxCount = 4;
+			game.attackDelay = 5;
 			break;
 		case 4:
 			bullets_Y = Y-15;
 			height = 49;
 			damage = 30;
-			Game.maxCount = 4;
-			Game.Attack_delay = 5;
+			game.maxCount = 4;
+			game.attackDelay = 5;
 			break;
 		default:
 			bullets_Y = Y-20;
 			height = 61;
 			damage = 40;
-			Game.maxCount = 6;
-			Game.Attack_delay = 3;
+			game.maxCount = 6;
+			game.attackDelay = 3;
 			break;
 		}
 	}

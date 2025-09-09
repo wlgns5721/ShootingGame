@@ -1,10 +1,10 @@
 
 public class Skill {
 	public int delay,launch_amount,numberOfBullet;
-	Skill(game Game) {
-		SetSkill(Game.skill_level,Game);
+	Skill(Game game) {
+		SetSkill(game.skillLevel,game);
 	}
-	void SetSkill(int skill_level,game Game) {
+	void SetSkill(int skill_level,Game game) {
 		switch (((skill_level-1)+1)) {
 		case 1:
 			launch_amount = 4;
@@ -35,8 +35,8 @@ public class Skill {
 			launch_amount = 6;
 			numberOfBullet = 30;
 			delay = 10;
-			Game.skill_damage = 20;
-			Game.ChangeSkillImage("..\\rsc\\skillBullet2.png");
+			game.skillDamage = 20;
+			game.changeSkillImage("..\\rsc\\skillBullet2.png");
 			break;
 		case 10:
 			launch_amount = 24;
@@ -59,11 +59,11 @@ public class Skill {
 			delay = 1;
 			break;
 		case 26:
-			Game.ChangeSkillImage("..\\rsc\\skillBullet3.png");
+			game.changeSkillImage("..\\rsc\\skillBullet3.png");
 			launch_amount = 5;
 			numberOfBullet = 60;
 			delay = 5;
-			Game.skill_damage = 30;
+			game.skillDamage = 30;
 			break;
 		case 30:
 			launch_amount = 30;

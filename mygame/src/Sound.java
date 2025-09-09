@@ -7,7 +7,7 @@ import javax.sound.sampled.LineEvent;
 import javax.sound.sampled.LineListener;
 
 class PlaySoundThread extends Thread{
-	game Game;
+	Game game;
 	String AudioFile;
 	PlaySoundThread(String _AudioFile) {
 		AudioFile = _AudioFile;

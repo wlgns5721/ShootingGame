@@ -96,29 +96,29 @@ class CreateEnemy {
 		move_speed_Y = Move_speed_Y;
 		bullet_speed = Bullet_speed;
 	}
-	//ÁöÁ¤µÈ À§Ä¡¿¡ ¸÷ »ý¼º
-	void Pattern1(int X, int Y, int Attack_Pattern, int Move_Pattern, int HP, int Level, int Image,game Game) {
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
+	void Pattern1(int X, int Y, int Attack_Pattern, int Move_Pattern, int HP, int Level, int Image,Game game) {
 		Enemy enemy = new Enemy(X,Y,HP,move_speed_X,move_speed_Y,1200,Attack_Pattern,Move_Pattern,bullet_speed,Image);
 		SetAttackPattern(Attack_Pattern, Level,enemy);
-		Game.enemyList.add(enemy);
-		Game.max_enemy++;
+		game.enemyList.add(enemy);
+		game.maxEnemy++;
 	}
 	
 	
-	void Pattern2(int X, int Y, int Attack_Pattern, int Move_Pattern, int HP, int Level, int Image, game Game) {
+	void Pattern2(int X, int Y, int Attack_Pattern, int Move_Pattern, int HP, int Level, int Image, Game game) {
 		Enemy enemy = new Enemy(X,Y,HP,move_speed_X,move_speed_Y,1100+(int)(Math.random()*300),Attack_Pattern,Move_Pattern,bullet_speed,Image);
 		SetAttackPattern(Attack_Pattern, Level,enemy);
-		Game.enemyList.add(enemy);
-		Game.max_enemy++;
+		game.enemyList.add(enemy);
+		game.maxEnemy++;
 	}
-	void Pattern3(int X, int Y, int Attack_Pattern, int Move_Pattern, int HP, int Level, int Image, game Game) {
+	void Pattern3(int X, int Y, int Attack_Pattern, int Move_Pattern, int HP, int Level, int Image, Game game) {
 		Enemy enemy = new Enemy(X,Y,HP,move_speed_X,move_speed_Y,1100+(int)(Math.random()*300),Attack_Pattern,Move_Pattern,bullet_speed,Image);
 		SetAttackPattern(Attack_Pattern, Level,enemy);
 		enemy.Delay = (int)(10*(Math.random()*10));
-		Game.enemyList.add(enemy);
-		Game.max_enemy++;
+		game.enemyList.add(enemy);
+		game.maxEnemy++;
 	}
-	void CreateBoss(int X, int Y, int Attack_Pattern, int Move_Pattern, int HP, int Level, int Image, game Game) {
+	void CreateBoss(int X, int Y, int Attack_Pattern, int Move_Pattern, int HP, int Level, int Image, Game game) {
 		Enemy enemy = new Enemy(X,Y,HP,move_speed_X,move_speed_Y,1100,Attack_Pattern,Move_Pattern,bullet_speed,Image);
 		SetAttackPattern(Attack_Pattern, Level,enemy);
 		switch(Image) {
@@ -136,8 +136,8 @@ class CreateEnemy {
 			break;
 		}
 		
-		Game.enemyList.add(enemy);
-		Game.max_enemy++;
+		game.enemyList.add(enemy);
+		game.maxEnemy++;
 	}
 	
 	void SetAttackPattern(int attack_Pattern, int Level ,Enemy enemy) {
