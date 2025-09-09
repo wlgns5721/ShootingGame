@@ -227,10 +227,10 @@ public class Game extends Applet implements Runnable{
 			if (moojukFlag) 
 				moojuk();
 			if (skillFlag)
-				shoot.Skill(this);
+				shoot.skill(this);
 			boomHandling();
 			inputHandling();
-			shoot.MoveBullet(this);
+			shoot.moveBullet(this);
 			itemHandling.Process(this);
 			
 			switch(level) {
@@ -518,7 +518,7 @@ public class Game extends Applet implements Runnable{
 		if (flowIndex>=150 && flowIndex<=300) {
 			if (flowIndex % 30 == 0) {
 				createEnemy.SetSpeed(5,0,8);
-				createEnemy.Pattern1(1350, 100+(int)(400*Math.random()),2,1,20,level,2,this);
+				createEnemy.pattern1(1350, 100+(int)(400*Math.random()),2,1,20,level,2,this);
 				
 			}			
 		}
@@ -526,13 +526,13 @@ public class Game extends Applet implements Runnable{
 		else if (flowIndex >= 450 && flowIndex <475) {
 			if (flowIndex % 5 == 0) {
 				createEnemy.SetSpeed(5,0,15);
-				createEnemy.Pattern1(1350, 150+(flowIndex-450)*13,2,2,20 ,level,2,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
+				createEnemy.pattern1(1350, 150+(flowIndex-450)*13,2,2,20 ,level,2,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
 			}
 		}
 		
 		else if (flowIndex == 700) {
 			createEnemy.SetSpeed(5,0,5);
-			createEnemy.Pattern2(1350,300,4,3, 400 ,level,4,this);
+			createEnemy.pattern2(1350,300,4,3, 400 ,level,4,this);
 		}
 		
 		else if (flowIndex > 800 && flowIndex <1850) {
@@ -543,18 +543,18 @@ public class Game extends Applet implements Runnable{
 		else if (flowIndex >= 1950 && flowIndex < 2050) {
 			if (flowIndex % 20 == 0) {
 				createEnemy.SetSpeed(-1, 3, 5);
-				createEnemy.Pattern1(1100,-40,3,4,20 ,level,0,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
+				createEnemy.pattern1(1100,-40,3,4,20 ,level,0,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
 			}
 		}
 		else if (flowIndex == 2100) {
 			createEnemy.SetSpeed(15,0,10);
 			for (int i=0; i<5; i++) 
-				createEnemy.Pattern1(1350,(i+1)*110,2,2,2 ,level+1,2,this);
+				createEnemy.pattern1(1350,(i+1)*110,2,2,2 ,level+1,2,this);
 		}
 		
 		else if (flowIndex == 2350) {
 			createEnemy.SetSpeed(7, 0, 10);
-			createEnemy.Pattern1(1350, 300, 3, 3 ,300 , level+1,3,this);
+			createEnemy.pattern1(1350, 300, 3, 3 ,300 , level+1,3,this);
 		}
 		
 		else if (flowIndex>=2350 && flowIndex < 3350) {
@@ -568,20 +568,20 @@ public class Game extends Applet implements Runnable{
 				if (attackPattern==2)
 					createEnemy.SetSpeed(10,0,7);
 				int movePattern = 1+(int)(Math.random()*2);
-				createEnemy.Pattern1(1350, 100+(int)(400*Math.random()),attackPattern,movePattern,20,level,attackPattern,this);	
+				createEnemy.pattern1(1350, 100+(int)(400*Math.random()),attackPattern,movePattern,20,level,attackPattern,this);	
 			}
 		}
 		
 		else if (flowIndex==4250) {
 			createEnemy.SetSpeed(5,0,8);
-			createEnemy.Pattern1(1350, 325,4,3,400,level+2,4,this);
+			createEnemy.pattern1(1350, 325,4,3,400,level+2,4,this);
 			createEnemy.SetSpeed(3,0,8);
 		}
 		else if (flowIndex >= 4250 && flowIndex <5250 && maxEnemy==0)
 			flowIndex = 5250;
 		else if (flowIndex==5300) {
 			createEnemy.SetSpeed(5,0,5);
-			createEnemy.CreateBoss(1350, 325,10,10,2000,level,6,this);
+			createEnemy.createBoss(1350, 325,10,10,2000,level,6,this);
 		}
 		
 		else if (flowIndex >=5300 && flowIndex <300000) {
@@ -606,58 +606,58 @@ public class Game extends Applet implements Runnable{
 	void flow2() {
 		if (flowIndex==100) {
 			createEnemy.SetSpeed(10,0,5);
-			createEnemy.Pattern1(1449,225,1,2,40,level,1,this);
-			createEnemy.Pattern1(1449,375,1,2,40,level,1,this);
+			createEnemy.pattern1(1449,225,1,2,40,level,1,this);
+			createEnemy.pattern1(1449,375,1,2,40,level,1,this);
 		}
 		else if(flowIndex==330) {
 			createEnemy.SetSpeed(10,0,10);
-			createEnemy.Pattern1(1350,150,2,2,40,level,2,this);
-			createEnemy.Pattern1(1350,300,2,2,40,level,2,this);
-			createEnemy.Pattern1(1350,450,2,2,40,level,2,this);
+			createEnemy.pattern1(1350,150,2,2,40,level,2,this);
+			createEnemy.pattern1(1350,300,2,2,40,level,2,this);
+			createEnemy.pattern1(1350,450,2,2,40,level,2,this);
 		}
 		else if (flowIndex == 360) {
 			createEnemy.SetSpeed(7,0,5);
-			createEnemy.Pattern1(1350,225,3,2,40,level,3,this);
-			createEnemy.Pattern1(1350,375,3,2,40,level,3,this);
+			createEnemy.pattern1(1350,225,3,2,40,level,3,this);
+			createEnemy.pattern1(1350,375,3,2,40,level,3,this);
 		}
 		else if (flowIndex == 650) {
 			createEnemy.SetSpeed(8, 0, 5);
-			createEnemy.Pattern1(1350, 325, 5, 2, 200, 1 , 4, this);
+			createEnemy.pattern1(1350, 325, 5, 2, 200, 1 , 4, this);
 		}
 		
 		else if (flowIndex == 1000) {
 			createEnemy.SetSpeed(20, 0, 3);
-			createEnemy.Pattern1(1350, 100, 1, 1, 40, level+1, 1, this);
-			createEnemy.Pattern1(1350, 600, 1, 1, 40, level+1, 1, this);
+			createEnemy.pattern1(1350, 100, 1, 1, 40, level+1, 1, this);
+			createEnemy.pattern1(1350, 600, 1, 1, 40, level+1, 1, this);
 		}
 		
 		else if (flowIndex == 1100) {
 			createEnemy.SetSpeed(10, 0, 3);
-			createEnemy.Pattern1(1350, 300, 1, 1, 40, level+2, 1, this);
+			createEnemy.pattern1(1350, 300, 1, 1, 40, level+2, 1, this);
 		}
 		
 		else if (flowIndex==1300) {
 			createEnemy.SetSpeed(5, 0, 15);
 			for (int i=0; i<10; i++)
-				createEnemy.Pattern2(1350, (int)(600*Math.random()), 2, 2, 20, level+1, 2, this);
+				createEnemy.pattern2(1350, (int)(600*Math.random()), 2, 2, 20, level+1, 2, this);
 		}
 		
 		else if (flowIndex == 1600) {
 			createEnemy.SetSpeed(5, 0, 5);
-			createEnemy.Pattern1(1350, 300, 6, 3, 600, level, 4, this);
+			createEnemy.pattern1(1350, 300, 6, 3, 600, level, 4, this);
 		}
 		else if (flowIndex>=1600 && flowIndex<2520 && maxEnemy==0)
 			flowIndex = 2520;
 		else if (flowIndex>=2600 && flowIndex<2800) {
 			if (flowIndex % 5 == 0) {
 				createEnemy.SetSpeed(5,0,5);
-				createEnemy.Pattern2(1350,100+(int)((flowIndex-2600)*2.5),2,2,10 ,1,2,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
+				createEnemy.pattern2(1350,100+(int)((flowIndex-2600)*2.5),2,2,10 ,1,2,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
 			}
 		}
 		else if (flowIndex == 3150) {
 			createEnemy.SetSpeed(25, 0, 5);
-			createEnemy.Pattern1(1350, 100, 5, 1, 100, level, 4, this);
-			createEnemy.Pattern1(1350, 500, 5, 1, 100, level, 4, this);
+			createEnemy.pattern1(1350, 100, 5, 1, 100, level, 4, this);
+			createEnemy.pattern1(1350, 500, 5, 1, 100, level, 4, this);
 		}
 		else if (flowIndex>=3400 && flowIndex<5100) {
 			if (flowIndex % 50 == 0) {
@@ -665,29 +665,29 @@ public class Game extends Applet implements Runnable{
 				int temp = 1+(int)(Math.random()*3);
 				if (temp==2)
 					createEnemy.SetSpeed(8, 0, 15);
-				createEnemy.Pattern2(1350,100+(int)(Math.random()*400),temp,2,70 ,level,temp,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
+				createEnemy.pattern2(1350,100+(int)(Math.random()*400),temp,2,70 ,level,temp,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
 			}
 			if (flowIndex % 400 == 0) {
 				createEnemy.SetSpeed(8, 0, 5);
-				createEnemy.Pattern2(1350,100+(int)(Math.random()*400),3,2,300,4,3,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
+				createEnemy.pattern2(1350,100+(int)(Math.random()*400),3,2,300,4,3,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
 			}
 		}
 		
 		else if (flowIndex >= 5200 && flowIndex < 5300) {
 			if (flowIndex % 20 == 0) {
 				createEnemy.SetSpeed(-1, 3, 5);
-				createEnemy.Pattern1(1100,-40,3,4,100,level,3,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
+				createEnemy.pattern1(1100,-40,3,4,100,level,3,this);  //X,Y,attack_pattern,move_pattern,HP, level, this
 			}
 		}
 		else if (flowIndex == 5350) {
 			createEnemy.SetSpeed(15,0,15);
 			for (int i=0; i<5; i++) 
-				createEnemy.Pattern1(1350,(i+1)*110,2,2,100,3,2,this);
+				createEnemy.pattern1(1350,(i+1)*110,2,2,100,3,2,this);
 		}
 		
 		else if (flowIndex==5700) {
 			createEnemy.SetSpeed(5, 0, 8);
-			createEnemy.Pattern1(1350,325,11,10,12000,1,7,this);
+			createEnemy.pattern1(1350,325,11,10,12000,1,7,this);
 		}
 		
 		else if (flowIndex>=5700 && flowIndex<300000 && maxEnemy==0)
@@ -712,23 +712,23 @@ public class Game extends Applet implements Runnable{
 			if (flowIndex%30==0) {
 				createEnemy.SetSpeed(20,-5+Math.random()*10, 10);
 				int temp = 2;
-				createEnemy.Pattern3(1350, 100+(int)(Math.random()*450),temp, 4, 50, 1,temp , this);
+				createEnemy.pattern3(1350, 100+(int)(Math.random()*450),temp, 4, 50, 1,temp , this);
 			}
 			if (flowIndex%200==0) {
 				createEnemy.SetSpeed(20, 0, 5);
-				createEnemy.Pattern3(1350, 100+(int)(Math.random()*450),5, 1, 500, 2, 4, this);
+				createEnemy.pattern3(1350, 100+(int)(Math.random()*450),5, 1, 500, 2, 4, this);
 			}
 			if (flowIndex%900==0) {
 				createEnemy.SetSpeed(5, 0, 15);
-				createEnemy.Pattern3(1350, 100+(int)(Math.random()*450),2, 2, 2000, 4, 4, this);
+				createEnemy.pattern3(1350, 100+(int)(Math.random()*450),2, 2, 2000, 4, 4, this);
 			}
 		}
 		else if (flowIndex == 2200) {
 			createEnemy.SetSpeed(5, 0, 20);
-			createEnemy.Pattern1(1350, 200, 2, 3, 2000, 1, 2, this);
-			createEnemy.Pattern1(1350, 600, 2, 3, 2000, 1, 2, this);
+			createEnemy.pattern1(1350, 200, 2, 3, 2000, 1, 2, this);
+			createEnemy.pattern1(1350, 600, 2, 3, 2000, 1, 2, this);
 			createEnemy.SetSpeed(5, 0, 8);
-			createEnemy.Pattern1(1350, 400, 4, 3, 2000, 4, 4, this);
+			createEnemy.pattern1(1350, 400, 4, 3, 2000, 4, 4, this);
 		}
 		
 		else if (flowIndex >=2200 && flowIndex <3200 && maxEnemy==0) {
@@ -736,11 +736,11 @@ public class Game extends Applet implements Runnable{
 		}
 		else if (flowIndex ==3500) {
 			createEnemy.SetSpeed(5, 0, 15);
-			createEnemy.Pattern1(1350, 200, 3, 5, 3000, 3, 3, this);
+			createEnemy.pattern1(1350, 200, 3, 5, 3000, 3, 3, this);
 		}
 		else if (flowIndex==3530) {
 			createEnemy.SetSpeed(5, 0, 15);
-			createEnemy.Pattern1(1350, 450, 3, 5, 3000, 3, 3, this);
+			createEnemy.pattern1(1350, 450, 3, 5, 3000, 3, 3, this);
 		}
 		else if (flowIndex>=3530 && flowIndex<4600 && maxEnemy==0)
 			flowIndex = 4700;
@@ -748,50 +748,50 @@ public class Game extends Applet implements Runnable{
 		else if (flowIndex >= 4800 && flowIndex < 6100) {
 			if (flowIndex%50==0) {
 				createEnemy.SetSpeed(5, 0, 8);
-				createEnemy.Pattern3(1350, 150+(int)(Math.random()*450), 1, 1, 300, 2, 1, this);				
+				createEnemy.pattern3(1350, 150+(int)(Math.random()*450), 1, 1, 300, 2, 1, this);				
 			}			
 		}
 		
 		else if (flowIndex>=6300 && flowIndex < 6700) {
 			if (flowIndex % 100==0) {
 				createEnemy.SetSpeed(10,0,5);
-				createEnemy.Pattern3(1350, 100+(int)(Math.random()*450), 4, 1, 300, 1, 4, this);
+				createEnemy.pattern3(1350, 100+(int)(Math.random()*450), 4, 1, 300, 1, 4, this);
 			}
 		}
 		
 		else if (flowIndex>=6700 && flowIndex < 7100) {
 			if (flowIndex % 100==0) {
 				createEnemy.SetSpeed(12,0,5);
-				createEnemy.Pattern3(1350, 100+(int)(Math.random()*450), 4, 1, 300, 2, 4, this);
+				createEnemy.pattern3(1350, 100+(int)(Math.random()*450), 4, 1, 300, 2, 4, this);
 			}
 		}
 		
 		else if (flowIndex>=7100 && flowIndex < 7500) {
 			if (flowIndex % 100==0) {
 				createEnemy.SetSpeed(15,0,5);
-				createEnemy.Pattern3(1350, 100+(int)(Math.random()*450), 4, 1, 300, 3, 4, this);
+				createEnemy.pattern3(1350, 100+(int)(Math.random()*450), 4, 1, 300, 3, 4, this);
 			}
 		}
 		
 		else if (flowIndex==7500) {
 			createEnemy.SetSpeed(18,0,5);
-			createEnemy.Pattern3(1350, 300, 4, 1, 300, 4, 4, this);
+			createEnemy.pattern3(1350, 300, 4, 1, 300, 4, 4, this);
 		}
 		else if (flowIndex==7600)
 			flowIndex=8099;
 		
 		else if (flowIndex == 8100) {
 			createEnemy.SetSpeed(15,0,5);
-			createEnemy.Pattern1(1350, 100, 5, 1, 300, 1, 4, this);
-			createEnemy.Pattern1(1350, 300, 5, 1, 300, 1, 4, this);
-			createEnemy.Pattern1(1350, 500, 5, 1, 300, 1, 4, this);
+			createEnemy.pattern1(1350, 100, 5, 1, 300, 1, 4, this);
+			createEnemy.pattern1(1350, 300, 5, 1, 300, 1, 4, this);
+			createEnemy.pattern1(1350, 500, 5, 1, 300, 1, 4, this);
 		}
 		else if (flowIndex==8200)
 			g_clip.close();
 		else if (flowIndex == 8300) {
 			playBGM("..\\rsc\\bgm4.wav");
 			createEnemy.SetSpeed(5, 0, 5);
-			createEnemy.Pattern1(1350, 200, 12, 12, 150000, 1, 8, this);
+			createEnemy.pattern1(1350, 200, 12, 12, 150000, 1, 8, this);
 		}
 		
 		else if (flowIndex>=8300 && flowIndex<300000 && maxEnemy==0)
@@ -813,16 +813,16 @@ public class Game extends Applet implements Runnable{
 	void flow4() {
 		if (flowIndex==100) {
 			createEnemy.SetSpeed(10,0,5);
-			createEnemy.Pattern3(1449,225,1,3,40000,level,1,this);
-			createEnemy.Pattern3(1449,375,1,3,40000,level,1,this);
+			createEnemy.pattern3(1449,225,1,3,40000,level,1,this);
+			createEnemy.pattern3(1449,375,1,3,40000,level,1,this);
 		
 		}
 		if (maxEnemy!=0)
 			flowIndex=200;
 		if (flowIndex==500) {
 			createEnemy.SetSpeed(10,0,5);
-			createEnemy.Pattern1(1449,225,1,4,40000,level,1,this);
-			createEnemy.Pattern1(1449,375,1,4,40000,level,1,this);
+			createEnemy.pattern1(1449,225,1,4,40000,level,1,this);
+			createEnemy.pattern1(1449,375,1,4,40000,level,1,this);
 		
 		}
 	}

@@ -3,9 +3,9 @@ class Bomb {
 	public double enemyBullet_X, enemyBullet_Y;
 	public double bulletSpeed_X, bulletSpeed_Y;
 	public int BulletSpeed,count;
-	public int fragment,explode,delay,init_explode,init_delay;
+	public int fragment,explode,delay,initExplode,initDelay;
 	public int explodePattern;
-	public int flag_speed;
+	public int flagSpeed;
 	Bomb(double X, double Y, int bullet_Speed, int Angle) {
 		bulletSpeed_Y = (double)bullet_Speed*Math.sin(Angle*Math.PI/180);
 		bulletSpeed_X = Math.sqrt(bullet_Speed*bullet_Speed-bulletSpeed_Y*bulletSpeed_Y);
@@ -16,17 +16,17 @@ class Bomb {
 		fragment = 50;
 		explode=1;
 		delay=0;
-		init_explode = 1;
-		init_delay = 10;
+		initExplode = 1;
+		initDelay = 10;
 	}
 	
-	void SetUpBomb(int Explode,int Delay, int Fragment,int Flag_speed, int ExplodePattern) {
-		explode = Explode;
-		init_explode = Explode;
-		init_delay = Delay;
-		fragment = Fragment;
-		explodePattern = ExplodePattern;
-		flag_speed = Flag_speed;
+	void setUpBomb(int explode,int delay, int fragment,int flagSpeed, int explodePattern) {
+		this.explode = explode;
+		this.initExplode = explode;
+		this.initDelay = delay;
+		this.fragment = fragment;
+		this.explodePattern = explodePattern;
+		this.flagSpeed = flagSpeed;
 	}
 	
 }

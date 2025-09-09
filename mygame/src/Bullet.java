@@ -49,7 +49,7 @@ class Bullet {
 class EnemyBullet {
 	public double enemyBullet_X, enemyBullet_Y;
 	public double bulletSpeed_X, bulletSpeed_Y,angle;
-	public int BulletSpeed,range_type;
+	public int BulletSpeed,rangeType;
 	EnemyBullet(double X, double Y, int bullet_Speed, double Angle) {
 		bulletSpeed_Y = (double)bullet_Speed*Math.sin(Angle*Math.PI/180);
 		bulletSpeed_X = Math.sqrt(bullet_Speed*bullet_Speed-bulletSpeed_Y*bulletSpeed_Y);
@@ -57,38 +57,38 @@ class EnemyBullet {
 		enemyBullet_Y = Y;
 		BulletSpeed = bullet_Speed;
 		angle = Angle;
-		range_type = 1;
+		rangeType = 1;
 	}
 	
-	void SetRange(int bullet_speed) {
+	void SetRange(int bulletSpeed) {
 		int temp = (int)(Math.random()*2);
-		switch (range_type) {
+		switch (rangeType) {
 		case 1:
-			bulletSpeed_Y = -bullet_speed+(Math.random()*bullet_speed*2);
+			bulletSpeed_Y = -bulletSpeed+(Math.random()*bulletSpeed*2);
 			break;		
 		case 2:
-			bulletSpeed_Y = -bullet_speed/2+(Math.random()*bullet_speed);
+			bulletSpeed_Y = -bulletSpeed/2+(Math.random()*bulletSpeed);
 			break;
 		}
 		switch (temp) {
 		case 0: 
-			bulletSpeed_X = -Math.sqrt(bullet_speed*bullet_speed-bulletSpeed_Y*bulletSpeed_Y);
+			bulletSpeed_X = -Math.sqrt(bulletSpeed*bulletSpeed-bulletSpeed_Y*bulletSpeed_Y);
 			break;
 		case 1:
-			bulletSpeed_X = Math.sqrt(bullet_speed*bullet_speed-bulletSpeed_Y*bulletSpeed_Y);
+			bulletSpeed_X = Math.sqrt(bulletSpeed*bulletSpeed-bulletSpeed_Y*bulletSpeed_Y);
 			break;
 		}
 	} 
 	
-	void Range2(int bullet_speed) {
+	void range2(int bulletSpeed) {
 		int temp = (int)(Math.random()*2);
-		bulletSpeed_Y = -bullet_speed/2+(Math.random()*bullet_speed);
+		bulletSpeed_Y = -bulletSpeed/2+(Math.random()*bulletSpeed);
 		switch (temp) {
 		case 0: 
-			bulletSpeed_X = -Math.sqrt(bullet_speed*bullet_speed-bulletSpeed_Y*bulletSpeed_Y);
+			bulletSpeed_X = -Math.sqrt(bulletSpeed*bulletSpeed-bulletSpeed_Y*bulletSpeed_Y);
 			break;
 		case 1:
-			bulletSpeed_X = Math.sqrt(bullet_speed*bullet_speed-bulletSpeed_Y*bulletSpeed_Y);
+			bulletSpeed_X = Math.sqrt(bulletSpeed*bulletSpeed-bulletSpeed_Y*bulletSpeed_Y);
 			break;
 		}
 	}

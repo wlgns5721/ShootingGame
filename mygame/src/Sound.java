@@ -8,15 +8,15 @@ import javax.sound.sampled.LineListener;
 
 class PlaySoundThread extends Thread{
 	Game game;
-	String AudioFile;
+	String audioFile;
 	PlaySoundThread(String _AudioFile) {
-		AudioFile = _AudioFile;
+		audioFile = _AudioFile;
 	}
 	
 	public void run() {
 		try {
 			final Clip clip = (Clip)AudioSystem.getLine(new Line.Info(Clip.class));
-			clip.open(AudioSystem.getAudioInputStream(new File(AudioFile)));
+			clip.open(AudioSystem.getAudioInputStream(new File(audioFile)));
 			clip.addLineListener(new LineListener() {
 			@Override
 			public void update(LineEvent event) {
@@ -38,8 +38,8 @@ class Sound {
 	public String name;
 	public Clip clip;
 	
-	Sound(String sound_name, Clip _clip) {
-		name = sound_name;
+	Sound(String soundName, Clip _clip) {
+		name = soundName;
 		clip = _clip;
 	}
 }

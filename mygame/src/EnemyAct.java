@@ -9,37 +9,37 @@ class EnemyAct {
 		MovePattern movePattern = new MovePattern();
 		for (int i=0; i<game.enemyList.size(); i++) {
 			buf = (Enemy)game.enemyList.elementAt(i);
-			switch (buf.move_Pattern) {
+			switch (buf.movePattern) {
 			case 1:
-				movePattern.Pattern1(game, buf);
+				movePattern.pattern1(game, buf);
 				break;
 			case 2:
-				movePattern.Pattern2(game, buf);
+				movePattern.pattern2(game, buf);
 				break;
 			case 3:
-				movePattern.Pattern3(game, buf);
+				movePattern.pattern3(game, buf);
 				break;
 			case 4:
-				movePattern.Pattern4(game, buf);
+				movePattern.pattern4(game, buf);
 				break;
 			case 5:
-				movePattern.Pattern5(game, buf);
+				movePattern.pattern5(game, buf);
 				break;
 			case 6:
-				movePattern.Pattern6(game, buf);
+				movePattern.pattern6(game, buf);
 				break;
 			case 7:
-				movePattern.Pattern7(game, buf);
+				movePattern.pattern7(game, buf);
 				break;
 			case 10:
-				movePattern.BossPattern(game, buf);
+				movePattern.bossPattern(game, buf);
 				break;
 			case 12:
-				movePattern.BossPattern3(game,buf);
+				movePattern.bossPattern3(game,buf);
 			}
 			buf.enemy_X-=buf.speed_X;
 			buf.enemy_Y+=buf.speed_Y;
-			game.grap.drawImage((Image)game.enemyImageList.elementAt(buf.image_number), (int)buf.enemy_X, (int)buf.enemy_Y,game);
+			game.grap.drawImage((Image)game.enemyImageList.elementAt(buf.imageNumber), (int)buf.enemy_X, (int)buf.enemy_Y,game);
 			if (buf.enemy_X <-100 || buf.enemy_Y<-100 || buf.enemy_Y > 750 || buf.enemy_X > 1450) {
 				game.enemyList.remove(i);
 				game.maxEnemy--;
@@ -65,53 +65,53 @@ class EnemyAct {
 			Enemy buf = (Enemy)game.enemyList.elementAt(i);
 			double x = buf.bullet_X;
 			double y = buf.enemy_Y + 10;
-			switch (buf.attack_Pattern) {
+			switch (buf.attackPattern) {
 			case 10:
-				boss1_attack_Pattern(game,x,y,buf,buf.bullet_speed);
+				boss1_attack_Pattern(game,x,y,buf,buf.bulletSpeed);
 				break;
 			case 11:
-				boss2_attack_Pattern(game,x,y,buf,buf.bullet_speed);
+				boss2_attack_Pattern(game,x,y,buf,buf.bulletSpeed);
 				break;
 			case 12:
 				boss3_attack_Pattern(game,x,y,buf);
 			}
 			if (buf.enemy_X <= 1350 && buf.attack_Flag ==true) {
 				buf.attack_Flag = false;
-				buf.Delay = buf.attack_Delay;
-				buf.fire_count++;
-				buf.SetBullet_X();
+				buf.delay = buf.attackDelay;
+				buf.fireCount++;
+				buf.setBullet_X();
 				x = buf.bullet_X;
 				y = buf.enemy_Y + 10;
-				switch (buf.attack_Pattern) {
+				switch (buf.attackPattern) {
 				case 1:
-					attack_Pattern1(game,x,y,buf.bullet_speed,buf.level);
+					attack_Pattern1(game,x,y,buf.bulletSpeed,buf.level);
 					break;
 				case 2:
-					attack_Pattern2(game,x,y,(double)game.x,(double)game.y,buf.bullet_speed);
+					attack_Pattern2(game,x,y,(double)game.x,(double)game.y,buf.bulletSpeed);
 					break;
 				case 3:
-					attack_Pattern3(game,x,y,buf,buf.bullet_speed);
+					attack_Pattern3(game,x,y,buf,buf.bulletSpeed);
 					break;
 				case 4:
-					attack_Pattern4(game,x,y,buf,buf.bullet_speed);
+					attack_Pattern4(game,x,y,buf,buf.bulletSpeed);
 					break;
 				case 5:
-					attack_BombPattern2(game,x,y,buf,buf.bullet_speed);
+					attack_BombPattern2(game,x,y,buf,buf.bulletSpeed);
 					break;
 				case 6:
-					attack_BombPattern1(game,x,y,buf,buf.bullet_speed);
+					attack_BombPattern1(game,x,y,buf,buf.bulletSpeed);
 					break;
 				
 				}
 				
-				if (buf.fire_count>=buf.numberOfBullet) {
-					buf.Delay = buf.reload_Delay;
-					buf.fire_count=0;
+				if (buf.fireCount>=buf.numberOfBullet) {
+					buf.delay = buf.reloadDelay;
+					buf.fireCount=0;
 				}
 			}
 			else if (buf.enemy_X < 1300) {
-				buf.Delay -= 5;
-				if (buf.Delay <= 0)
+				buf.delay -= 5;
+				if (buf.delay <= 0)
 					buf.attack_Flag=true;
 			}
 		}
@@ -144,8 +144,8 @@ class EnemyAct {
 				BoomEffect boomEffect = new BoomEffect(game.x,game.y);
 				game.boomList.add(boomEffect);
 				game.x = -5000;
-				game.shoot.skill_launch_amount=0;
-				game.shoot.skill_fireDelay=0;
+				game.shoot.skillLaunchAmount=0;
+				game.shoot.skillFireDelay=0;
 				game.skillFlag = false;
 				return true;
 			}
@@ -182,28 +182,28 @@ class EnemyAct {
 	}
 	//��Ѹ��� ���
 	void attack_Pattern3(Game game, double x, double y,Enemy enemy, int speed) {
-		EnemyBullet enemyBullet = new EnemyBullet(x,y+25,speed,enemy.numberOfBullet*5-(int)enemy.fire_count*10+enemy.fire_count/8);
+		EnemyBullet enemyBullet = new EnemyBullet(x,y+25,speed,enemy.numberOfBullet*5-(int)enemy.fireCount*10+enemy.fireCount/8);
 		game.enemyBulletList.add(enemyBullet);
 	}
 	
 	//��ä�÷� ������� �߻�
 	void attack_Pattern4(Game game, double x, double y,Enemy enemy, int speed) {
 		for (int s=82; s>-90; s-=15 ) {
-			EnemyBullet enemyBullet = new EnemyBullet(x,y,speed,s+(enemy.fire_count%2)*8);
+			EnemyBullet enemyBullet = new EnemyBullet(x,y,speed,s+(enemy.fireCount%2)*8);
 			game.enemyBulletList.add(enemyBullet);
 		}
 	}
 	//������ ���� ���⿡ ���ߵ� ��ź
 	void attack_BombPattern1(Game game, double x, double y, Enemy enemy, int flag_speed) {
 			Bomb bomb = new Bomb(x,y,15,0);
-			bomb.SetUpBomb(1,100,200,flag_speed,2);
+			bomb.setUpBomb(1,100,200,flag_speed,2);
 			game.bombList.add(bomb);
 			game.playSound("..\\rsc\\bomb1.wav");
 		}
 	//����� ���� ��ź
 	void attack_BombPattern2(Game game, double x, double y, Enemy enemy, int flag_speed) {
 		Bomb bomb = new Bomb(x,y,15,0);
-		bomb.SetUpBomb(3,5,20,flag_speed,1);
+		bomb.setUpBomb(3,5,20,flag_speed,1);
 		game.bombList.add(bomb);
 		game.playSound("..\\rsc\\bomb2.wav");
 		
@@ -211,13 +211,13 @@ class EnemyAct {
 	
 	void boss1_attack_Pattern(Game game, double x, double y, Enemy enemy, int flag_speed) {
 		if (game.flowIndex==5400) 
-			enemy.SetAttackDelay(1000, 1000, 1);
+			enemy.setAttackDelay(1000, 1000, 1);
 		if (game.flowIndex>=5400 && game.flowIndex < 5600 && enemy.attack_Flag==true) 
 			attack_BombPattern2(game,x,y*19/15,enemy,flag_speed);	
 		
 		else if (game.flowIndex>=5600 && game.flowIndex < 5800 && enemy.attack_Flag==true) {
-			game.createEnemy.SetAttackPattern(2, 2, enemy);
-			enemy.SetAttackDelay(70, 500, 3);
+			game.createEnemy.setAttackPattern(2, 2, enemy);
+			enemy.setAttackDelay(70, 500, 3);
 			attack_Pattern2(game,x+50,y+20,game.x,game.y,15);
 			attack_Pattern2(game,x+120,y,game.x,game.y,15);
 			attack_Pattern2(game,x,y*19/15,game.x,game.y,15);
@@ -231,8 +231,8 @@ class EnemyAct {
 	
 	void boss2_attack_Pattern(Game game, double x, double y, Enemy enemy, int flag_speed) {
 		if (game.flowIndex==5800) {
-			enemy.Delay = 0;
-			enemy.SetAttackDelay(50, 300, 8);
+			enemy.delay = 0;
+			enemy.setAttackDelay(50, 300, 8);
 		}
 		if (game.flowIndex>=5800 && game.flowIndex < 5900 && enemy.attack_Flag==true) { 
 			attack_Pattern1(game,x,y*19/15,10,3);
@@ -240,8 +240,8 @@ class EnemyAct {
 		}
 		
 		else if (game.flowIndex>=5900 && game.flowIndex < 6150 && enemy.attack_Flag==true) {
-			game.createEnemy.SetAttackPattern(2, 2, enemy);
-			enemy.SetAttackDelay(70, 300, 3);
+			game.createEnemy.setAttackPattern(2, 2, enemy);
+			enemy.setAttackDelay(70, 300, 3);
 			attack_Pattern2(game,x+50,y+20,game.x,game.y,15);
 			attack_Pattern2(game,x+120,y,game.x,game.y,15);
 			attack_Pattern2(game,x,y*19/15,game.x,game.y,15);
@@ -249,7 +249,7 @@ class EnemyAct {
 			attack_Pattern2(game,x+150,y+130,game.x,game.y,15);
 		}
 		else if (game.flowIndex==6150)
-			enemy.SetAttackDelay(50, 300, 8);
+			enemy.setAttackDelay(50, 300, 8);
 		else if (game.flowIndex >=6150 && game.flowIndex <6250 && enemy.attack_Flag==true) {
 			attack_Pattern1(game,x,y*19/15,10,3);
 			attack_Pattern1(game,x,y*17/15,10,3);
@@ -273,7 +273,7 @@ class EnemyAct {
 			attack_Pattern1(game,x+233,y+140,10,3);
 		}
 		if (game.flowIndex==8400)
-			enemy.SetAttackDelay(10, 300, 36);
+			enemy.setAttackDelay(10, 300, 36);
 		else if (game.flowIndex>8400 && game.flowIndex<8600 && enemy.attack_Flag==true) {
 			attack_Pattern2(game,x+30,y+10,game.x,game.y,25);
 			attack_Pattern2(game,x+20,y+140,game.x,game.y,25);
@@ -292,14 +292,14 @@ class EnemyAct {
 			attack_BombPattern1(game,x+30,y+270,enemy,10);
 		else if (game.flowIndex==8920) {
 			Bomb bomb = new Bomb(x+20,y+140,15,0);
-			bomb.SetUpBomb(3,5,70,7,1);
+			bomb.setUpBomb(3,5,70,7,1);
 			bomb.count = 140;
 			game.bombList.add(bomb);
 			game.playSound("..\\rsc\\bomb1.wav");
 		}
 		
 		else if (game.flowIndex==9150) {
-			enemy.SetAttackDelay(10, 300, 36);
+			enemy.setAttackDelay(10, 300, 36);
 			boss_index=1;
 		}
 		else if (game.flowIndex>=9150 && game.flowIndex<9300 && game.flowIndex%5==0) {
@@ -312,7 +312,7 @@ class EnemyAct {
 		else if (game.flowIndex==9320)
 			attack_BombPattern1(game,x+20,y+140,enemy,10);
 		else if (game.flowIndex == 9500)
-			enemy.SetAttackDelay(50, 300, 8);
+			enemy.setAttackDelay(50, 300, 8);
 		else if (game.flowIndex >=9500 && game.flowIndex < 9650 && game.flowIndex%10==0) {
 			attack_Pattern1(game,x+30,y+10,8,3);
 			attack_Pattern1(game,x+20,y+140,8,3);
@@ -321,19 +321,19 @@ class EnemyAct {
 		else if (game.flowIndex==9750)
 			game.flowIndex=8399;
 	}
-	void bombPattern1(int i, Bomb buf, int range_type, Game game) {
+	void bombPattern1(int i, Bomb buf, int rangeType, Game game) {
 		buf.count--;
 		buf.enemyBullet_X-=buf.bulletSpeed_X;
 		buf.enemyBullet_Y+=buf.bulletSpeed_Y;
 		buf.bulletSpeed_X-=buf.bulletSpeed_X/30;
 		buf.bulletSpeed_Y-=buf.bulletSpeed_Y/30;
-		if (buf.explode==buf.init_explode)
+		if (buf.explode==buf.initExplode)
 			game.grap.drawImage(game.bombImage,(int)buf.enemyBullet_X,(int)buf.enemyBullet_Y,game);
 		if (buf.count<=0) {
 			if (buf.explode==0)
 				game.bombList.remove(i);
 			if (buf.delay==0) {
-				if (buf.explode==buf.init_explode) {
+				if (buf.explode==buf.initExplode) {
 					buf.bulletSpeed_X=0;
 					buf.bulletSpeed_Y=0;
 					BoomEffect boomEffect = new BoomEffect((int)buf.enemyBullet_X-15,(int)buf.enemyBullet_Y-20);
@@ -343,11 +343,11 @@ class EnemyAct {
 				buf.explode--;
 				for (int s=0; s<buf.fragment; s++) {
 					EnemyBullet enemyBullet = new EnemyBullet(buf.enemyBullet_X,buf.enemyBullet_Y,buf.BulletSpeed,0);
-					enemyBullet.range_type = range_type;
-					enemyBullet.SetRange(buf.flag_speed);
+					enemyBullet.rangeType = rangeType;
+					enemyBullet.SetRange(buf.flagSpeed);
 					game.enemyBulletList.add(enemyBullet);
 				}
-				buf.delay = buf.init_delay;
+				buf.delay = buf.initDelay;
 			}
 			buf.delay--;
 		}
