@@ -220,8 +220,8 @@ public class Game extends Applet implements Runnable{
 	public void paint(Graphics g) {
 		if (startFlag) {
 			moveBackground();
-			enemyAct.MoveEnemy(this);
-			enemyAct.EnemyAttack(this);
+			enemyAct.moveEnemy(this);
+			enemyAct.enemyAttack(this);
 			if (deathFlag) 
 				revival();
 			if (moojukFlag) 

@@ -3,7 +3,7 @@ class Enemy {
 	public double enemy_X, enemy_Y, bullet_X;
 	public int HP,attackDelay,reloadDelay, numberOfBullet,delay,bulletSpeed,score;
 	public int width, height;
-	public boolean attack_Flag;
+	public boolean attackFlag;
 	public int moveLimit,fireCount;
 	public double speed_X, speed_Y;
 	public int attackPattern, movePattern, moveIndex,imageNumber,maxHP,temp,level=1;
@@ -12,7 +12,7 @@ class Enemy {
 		this.enemy_Y = Y;
 		this.HP = hp;
 		this.maxHP = hp;
-		this.attack_Flag = false;
+		this.attackFlag = false;
 		this.moveLimit = moveLimit;
 		switch (imageNumber){
 		case 0:

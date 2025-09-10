@@ -60,7 +60,7 @@ class EnemyBullet {
 		rangeType = 1;
 	}
 	
-	void SetRange(int bulletSpeed) {
+	void setRange(int bulletSpeed) {
 		int temp = (int)(Math.random()*2);
 		switch (rangeType) {
 		case 1:
